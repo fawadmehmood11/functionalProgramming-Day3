@@ -1,4 +1,4 @@
-var UNIT_AMOUNT = [
+let UNIT_AMOUNT = [
   { name: "ONE HUNDRED", value: 100.0 },
   { name: "TWENTY", value: 20.0 },
   { name: "TEN", value: 10.0 },
@@ -10,9 +10,9 @@ var UNIT_AMOUNT = [
   { name: "PENNY", value: 0.01 },
 ];
 
-function checkCashRegister(price, cash, cid) {
+const checkCashRegister = (price, cash, cid) => {
   let changeToGive = cash - price;
-  let cashRegister = { status: "", changeToGive: [] };
+  let cashRegister = { status: "", change: [] };
 
   let sumCid = parseFloat(
     cid
@@ -28,7 +28,7 @@ function checkCashRegister(price, cash, cid) {
 
   if (sumCid === changeToGive) {
     cashRegister.status = "CLOSED";
-    cashRegister.changeToGive = cid;
+    cashRegister.change = cid;
     return cashRegister;
   }
 
@@ -62,9 +62,9 @@ function checkCashRegister(price, cash, cid) {
     return cashRegister;
   }
   cashRegister.status = "OPEN";
-  cashRegister.changeToGive = cashArray;
+  cashRegister.change = cashArray;
   return cashRegister;
-}
+};
 
 console.log(
   checkCashRegister(3.26, 100, [
